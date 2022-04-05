@@ -8,6 +8,9 @@ class Producto {
         this.precio = precio;
         this.stock = stock;
         }
+    actualizarStock (x){
+        this.stock = this.stock - x;
+    }
     }
 
 class Pedido {
@@ -32,8 +35,11 @@ function agregarAlCarrito (){
         let cantidad = Number(prompt("Ingresá la cantidad"));
             switch (producto){
                 case 1:
-                    if (cantidad > productos[0].stock){
-                        alert("Lo sentimos, no tenemos stock suficiente" + "\nEl stock disponible es de " + productos[0].stock);
+                    productos[0].actualizarStock(cantidad);
+                    if (productos[0].stock < 0 || isNaN (cantidad)){
+                        alert("Lo sentimos, no tenemos stock suficiente");
+                        productos[0].stock = productos[0].stock + cantidad;
+                        alert("El stock disponible es de " + productos[0].stock);
                         precio = 0;
                         cantidad = 0;
                     } else if (cantidad ===0){
@@ -46,8 +52,11 @@ function agregarAlCarrito (){
                     };
                     break;
                 case 2:
-                    if (cantidad > productos[1].stock){
-                        alert("Lo sentimos, no tenemos stock suficiente" + "\nEl stock disponible es de " + productos[1].stock);
+                    productos[1].actualizarStock(cantidad);
+                    if (productos[1].stock < 0 || isNaN (cantidad)){
+                        alert("Lo sentimos, no tenemos stock suficiente");
+                        productos[1].stock = productos[1].stock + cantidad;
+                        alert("El stock disponible es de " + productos[1].stock);
                         precio = 0;
                         cantidad = 0;
                     } else if (cantidad ===0){
@@ -59,8 +68,11 @@ function agregarAlCarrito (){
                     }
                     break;
                 case 3:
-                    if (cantidad > productos[2].stock){
-                        alert("Lo sentimos, no tenemos stock suficiente" + "\nEl stock disponible es de " + productos[2].stock);
+                    productos[2].actualizarStock(cantidad);
+                    if (productos[2].stock < 0 || isNaN (cantidad)){
+                        alert("Lo sentimos, no tenemos stock suficiente");
+                        productos[2].stock = productos[2].stock + cantidad;
+                        alert("El stock disponible es de " + productos[2].stock);
                         precio = 0;
                         cantidad = 0;
                     } else if (cantidad ===0){
@@ -92,12 +104,12 @@ function agregarAlCarrito (){
 function calcularEnvio (total){
     let confirmacion = confirm ("Querés envio a domicilio?");
     if (confirmacion && total >=2500){
-        alert("Tenés envío sin cargo. El total de tu compra es $ "+ total);
+        alert("Tenés envío sin cargo. El total de tu compra es $"+ total);
     } else if (confirmacion && total < 2500 && total !=0){
         total = total + 200;
-        alert("El envio cuesta $200. El total de tu compra es $ " + total);
+        alert("El envio cuesta $200. El total de tu compra es $" + total);
     } else {
-        alert("El total de tu compra es $ " + total);
+        alert("El total de tu compra es $" + total);
     }
     return total;
 }
@@ -106,5 +118,5 @@ agregarAlCarrito();
 if (total > 0) {
 	calcularEnvio(total);
 } else {
-	alert('No has agregado nada al carrito, vuelve pronto.');
+	alert("No has agregado nada al carrito, vuelve pronto.");
 }
