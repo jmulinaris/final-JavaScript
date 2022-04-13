@@ -1,0 +1,3 @@
+const carritoIndex = (productoId) =>{
+    
+}

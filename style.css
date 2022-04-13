@@ -1,0 +1,50 @@
+* {
+    box-sizing: border-box;
+}
+
+.btn-dark {
+    background-color: rgb(221, 51, 80);
+    border: solid rgb(221, 51, 80);
+}
+
+.carrito{
+    width:25px;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10%;
+    box-shadow: rgba(46, 45, 45, 0.09) 0px 3px 12px;
+    flex-wrap: nowrap;
+}
+
+#productos{
+    display: grid;
+    gap: 1rem;
+    max-width: 60rem;
+    margin: 60px auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.modal-container {
+    background-color: azure;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    left: 25vw;
+    opacity: 0;
+    height: 20vh;
+    width: 50vw;
+    transition: opacity 0.3s ease;
+}
+
+.modal-container.show {
+    pointer-events: auto;
+    opacity: 1;
+    background-color: aqua;
+}
