@@ -2,17 +2,13 @@
     box-sizing: border-box;
 }
 
-.btn-dark {
+.btn-secondary {
     background-color: rgb(221, 51, 80);
     border: solid rgb(221, 51, 80);
 }
 
 .carrito{
     width:25px;
-}
-
-.carrito :hover{
-    color:grey;
 }
 
 nav{
@@ -35,16 +31,14 @@ nav{
 }
 
 .modal-container {
-    /* display: flex; */
-    /*align-items: baseline;*/
-    /* justify-content: space-around; */
+    display: flex;
+    flex-direction: column;
     position: fixed;
     left: 35vw;
     top:10vw;
     opacity: 0;
     height: 30vh;
     width: 25vw;
-    transition: opacity 0.3s ease;
     z-index: 100;
 }
 
@@ -52,8 +46,9 @@ nav{
     pointer-events: auto;
     opacity: 1;
     background-color: rgb(247, 100, 124);
-    border: solid;
-    border-radius: 15px;
+    border: 3px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+    box-shadow: grey 2px;
 }
 
 .texto-pedido{
@@ -61,10 +56,12 @@ nav{
 }
 
 #close{
-    width:35px;
+    width:30px;
     color:fuchsia;
-    margin-left:80%;
+    margin-left: 85%;
+    margin-top:2%;
 }
+
 
 .detalleCarrito{
     display: flex;
@@ -72,4 +69,5 @@ nav{
     align-items: flex-start;
     justify-content: space-around;
     margin-left:10%;
+    margin-top:5%;
 }
