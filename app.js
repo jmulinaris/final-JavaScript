@@ -12,12 +12,16 @@ const mostrarProductos = (productos) => {
                 <h5 class="card-title">${producto.nombre}</h5>
                 <p class="card-text">${producto.desc}</p>
                 <p><strong>$${producto.precio}</strong></p>
-                <a href="#" class="btn btn-dark">COMPRAR</a>
+                <a href="#" class="btn btn-dark" id="boton${producto.id}">COMPRAR</a>
             </div>
             </div>
             `
     contenedorProductos.appendChild (div);
-    });
-}
+    const boton = document.getElementById(`boton${producto.id}`);
+    boton.addEventListener("click", () =>{
+        carritoIndex(producto.id);
+        })
+    })
+};
 
 mostrarProductos(productos);

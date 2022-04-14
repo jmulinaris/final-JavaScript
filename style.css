@@ -11,6 +11,10 @@
     width:25px;
 }
 
+.carrito :hover{
+    color:grey;
+}
+
 nav{
     display: flex;
     justify-content: space-between;
@@ -31,20 +35,41 @@ nav{
 }
 
 .modal-container {
-    background-color: azure;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    /* display: flex; */
+    /*align-items: baseline;*/
+    /* justify-content: space-around; */
     position: fixed;
-    left: 25vw;
+    left: 35vw;
+    top:10vw;
     opacity: 0;
-    height: 20vh;
-    width: 50vw;
+    height: 30vh;
+    width: 25vw;
     transition: opacity 0.3s ease;
+    z-index: 100;
 }
 
 .modal-container.show {
     pointer-events: auto;
     opacity: 1;
-    background-color: aqua;
+    background-color: rgb(247, 100, 124);
+    border: solid;
+    border-radius: 15px;
+}
+
+.texto-pedido{
+    margin-left:10%;
+}
+
+#close{
+    width:35px;
+    color:fuchsia;
+    margin-left:80%;
+}
+
+.detalleCarrito{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    margin-left:10%;
 }
