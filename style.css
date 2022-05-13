@@ -1,10 +1,11 @@
 * {
     box-sizing: border-box;
+    --pink:rgb(221, 51, 80);
 }
 
 .btn-secondary {
-    background-color: rgb(221, 51, 80);
-    border: solid rgb(221, 51, 80);
+    background-color: var(--pink) ;
+    border: solid var(--pink) ;
 }
 
 .carrito{
@@ -31,43 +32,59 @@ nav{
 }
 
 .modal-container {
-    display: flex;
-    flex-direction: column;
     position: fixed;
-    left: 35vw;
-    top:10vw;
+    left: 68%;
+    top:6%;
     opacity: 0;
-    height: 30vh;
-    width: 25vw;
+    height: auto;
+    width: 30%;
     z-index: 100;
+    transition:all .5s;
 }
 
 .modal-container.show {
     pointer-events: auto;
     opacity: 1;
-    background-color: rgb(247, 100, 124);
+    background-color: white;
     border: 3px solid rgba(0,0,0,.125);
     border-radius: 0.25rem;
     box-shadow: grey 2px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.texto-pedido{
-    margin-left:10%;
+.detalleCarrito{
+    display:grid;
+    text-align: center;
 }
 
 #close{
     width:30px;
-    color:fuchsia;
-    margin-left: 85%;
+    margin-left: 83%;
     margin-top:2%;
 }
 
+.productoEnCarrito{
+    display:grid;
+    grid-template-columns: 25% 25% 25% auto;
+    grid-template-rows: 25% 25% 25% auto;
+    margin-left:5%;
+}
 
-.detalleCarrito{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-around;
-    margin-left:10%;
-    margin-top:5%;
+.boton-eliminar{
+    width:20px;
+    margin-left:5%;
+}
+
+#finalizar-compra{
+    visibility:hidden;
+}
+
+#vaciar-carrito{
+    visibility:hidden;
+}
+
+.mostrarBoton{
+    visibility: visible;
 }
