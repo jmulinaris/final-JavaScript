@@ -1,6 +1,4 @@
 import { mostrarProductos } from "./app.js";
-// import { mostrarBotones } from "./finalizarCompra.js";
-// import { botonFinalizar } from "./finalizarCompra.js";
 import { getData } from "./getData.js";
 import { cerrarModal } from "./modal.js";
 import { productos } from "./stock.js";
@@ -138,36 +136,40 @@ botonSeguir.addEventListener("click", ()=>{
 });
 
 //TERMINAR COMPRA
-// const botonFinalizar = document.getElementById("finalizar-compra");
+const botonFinalizar = document.getElementById("finalizar-compra");
 
 // if (carritoDeCompras.length > 0 ){
 //     botonFinalizar.classList.toggle ("mostrarBoton")
 // } else {
 //     botonFinalizar.classList.toggle ("mostrarBoton")
 // }
+if (carritoDeCompras.length > 0 ){
+    // botonFinalizar.classList.toggle ("mostrarBoton");
+    alert("si funciono");
+}
 
-// botonFinalizar.addEventListener ("click", async ()=> {
-//     cerrarModal();
-//     const { value: email } = await Swal.fire({
-//             title: 'Para continuar, ingrese su mail',
-//             input: 'email',
-//             inputPlaceholder: 'Ingrese su email',
-//             showCancelButton: true,
-//             cancelButtonText: 'Cancelar',
-//             allowEscapeKey: false,
-//             allowOutsideClick: false,
-//         });
-//         if(email){
-//             contenedorCarrito.innerHTML = '';
-//             carritoDeCompras = [];
-//             actualizarCarrito(carritoDeCompras);
-//             Swal.fire(
-//                 '¡Gracias por su compra!',
-//                 'Recibirá un mail con el link de pago',
-//                 'success'
-//             );
-//         }
-//     });
+botonFinalizar.addEventListener ("click", async ()=> {
+    cerrarModal();
+    const { value: email } = await Swal.fire({
+            title: 'Para continuar, ingrese su mail',
+            input: 'email',
+            inputPlaceholder: 'Ingrese su email',
+            showCancelButton: true,
+            cancelButtonText: 'Cancelar',
+            allowEscapeKey: false,
+            allowOutsideClick: false,
+        });
+        if(email){
+            contenedorCarrito.innerHTML = '';
+            carritoDeCompras = [];
+            actualizarCarrito(carritoDeCompras);
+            Swal.fire(
+                '¡Gracias por su compra!',
+                'Recibirá un mail con el link de pago',
+                'success'
+            );
+        }
+    });
 
 
 
