@@ -39,7 +39,7 @@ nav{
     height: auto;
     width: 30%;
     z-index: 100;
-    transition:all .5s;
+    transition:all .2s;
 }
 
 .modal-container.show {
@@ -77,14 +77,6 @@ nav{
     margin-left:5%;
 }
 
-#finalizar-compra{
-    visibility:hidden;
-}
-
-#vaciar-carrito{
-    visibility:hidden;
-}
-
-.mostrarBoton{
-    visibility: visible;
+.ocultarBoton{
+    visibility: hidden;
 }

@@ -13,7 +13,6 @@ const contenedorCarrito = document.getElementById('carrito-contenedor');
 export const agregarAlCarrito = (productoId) => {
     if (localStorage.getItem("carrito")) {
     carritoDeCompras = JSON.parse(localStorage.getItem("carrito"));
-
     }
 
     let productoEnCarrito = carritoDeCompras.find(producto => producto.id == productoId);
@@ -52,8 +51,13 @@ let precioTotal = document.getElementById('precioTotal');
 
 export const actualizarCarrito = (carritoDeCompras) => {
     contadorCarrito.innerText = carritoDeCompras.reduce((acc, el) => acc + el.cantidad, 0);
-    precioTotal.innerText = carritoDeCompras.reduce((acc, el) => acc + (el.precio * el.cantidad), 0);
+    let total = carritoDeCompras.reduce((acc, el) => acc + (el.precio * el.cantidad), 0);
+    precioTotal.innerHTML = `Total a pagar: $${total}`
+    if (total === 0){
+        precioTotal.innerHTML = `No hay productos en el carrito`
+    }
     localStorage.setItem("carrito", JSON.stringify(carritoDeCompras));
+    renderBotones();
 }
 
 //LISTA DE PRODUCTOS DEL CARRITO
@@ -90,19 +94,19 @@ document.addEventListener("DOMContentLoaded", () => {
                         <img id=eliminar${producto.id} class="boton-eliminar" src="img/trash3.svg" alt="close" id="close"></img>
                     `
     contenedorCarrito.appendChild(div);
-
     actualizarCarrito(carritoEnStorage);
-    eliminarProductoCarrito(producto.id)
+    eliminarProductoCarrito(producto.id);
     })
+    renderBotones();
     }
 })
+
 
 //VACIAR CARRITO
 const botonVaciar = document.getElementById("vaciar-carrito");
 
 function vaciarCarrito() {
-    if(carritoDeCompras.length > 0){
-    carritoDeCompras =[];
+    carritoDeCompras = [];
     contenedorCarrito.innerHTML="";
     actualizarCarrito(carritoDeCompras);
     Toastify({
@@ -113,19 +117,10 @@ function vaciarCarrito() {
             background: "linear-gradient(to right, var(--pink), rgb(228, 118, 136)"
         }
     }).showToast();
-    cerrarModal();} else {
-        Toastify({
-        text: "No hay productos en el carrito",
-        duration:1000,
-        position:"center",
-        style:{
-            background: "linear-gradient(to right, var(--pink), rgb(228, 118, 136)"
-        }
-    }).showToast();
-    }
+    cerrarModal();
 }
 
-    botonVaciar.addEventListener ("click", vaciarCarrito);
+botonVaciar.addEventListener ("click", vaciarCarrito);
 
 
 //SEGUIR COMPRANDO
@@ -138,16 +133,6 @@ botonSeguir.addEventListener("click", ()=>{
 //TERMINAR COMPRA
 const botonFinalizar = document.getElementById("finalizar-compra");
 
-// if (carritoDeCompras.length > 0 ){
-//     botonFinalizar.classList.toggle ("mostrarBoton")
-// } else {
-//     botonFinalizar.classList.toggle ("mostrarBoton")
-// }
-if (carritoDeCompras.length > 0 ){
-    // botonFinalizar.classList.toggle ("mostrarBoton");
-    alert("si funciono");
-}
-
 botonFinalizar.addEventListener ("click", async ()=> {
     cerrarModal();
     const { value: email } = await Swal.fire({
@@ -155,6 +140,7 @@ botonFinalizar.addEventListener ("click", async ()=> {
             input: 'email',
             inputPlaceholder: 'Ingrese su email',
             showCancelButton: true,
+            confirmButtonColor:"var(--pink)",
             cancelButtonText: 'Cancelar',
             allowEscapeKey: false,
             allowOutsideClick: false,
@@ -166,10 +152,22 @@ botonFinalizar.addEventListener ("click", async ()=> {
             Swal.fire(
                 '¡Gracias por su compra!',
                 'Recibirá un mail con el link de pago',
-                'success'
+                'success',
             );
         }
     });
+
+//MOSTRAR U OCULTAR BOTONES DEL CARRITO
+function renderBotones (){
+    if(carritoDeCompras.length === 0){
+        botonFinalizar.classList.add("ocultarBoton");
+        botonVaciar.classList.add("ocultarBoton");
+    } else {
+        botonFinalizar.classList.remove("ocultarBoton");
+        botonVaciar.classList.remove("ocultarBoton");
+    }
+}
+
 
 
 

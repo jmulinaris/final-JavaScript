@@ -17,7 +17,7 @@ export const mostrarProductos = async () => {
                 <h5 class="card-title">${producto.nombre}</h5>
                 <p class="card-text">${producto.desc}</p>
                 <p class="card-text"><strong>$ ${producto.precio}</strong></p>
-                <button class="btn btn-secondary" id="boton${producto.id}">COMPRAR</a></button>
+                <button class="btn btn-secondary" id="boton${producto.id}">+ AGREGAR AL CARRITO</a></button>
             </div>
             </div>
             `

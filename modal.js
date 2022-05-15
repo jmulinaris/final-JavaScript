@@ -10,7 +10,9 @@ function cerrarModal (){
     modal_container.classList.remove("show");
 }
 
-open.addEventListener("click", abrirModal);
+open.addEventListener("click", () =>{
+    abrirModal();
+});
 
 close.addEventListener("click", cerrarModal);
 
