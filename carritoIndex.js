@@ -149,10 +149,12 @@ botonFinalizar.addEventListener ("click", async ()=> {
             contenedorCarrito.innerHTML = '';
             carritoDeCompras = [];
             actualizarCarrito(carritoDeCompras);
-            Swal.fire(
-                '¡Gracias por su compra!',
-                'Recibirá un mail con el link de pago',
-                'success',
+            Swal.fire({
+                icon: "success",
+                title:"¡Gracias por su compra!",
+                text:"Recibirá un mail con el link de pago",
+                confirmButtonColor:"var(--pink)",
+            }
             );
         }
     });
